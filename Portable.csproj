@@ -19,22 +19,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\portable-net40+wp7+sl4+win8\</OutputPath>
-    <IntermediateOutputPath>obj\Debug\portable-net40+wp7+sl4+win8\</IntermediateOutputPath>
+    <OutputPath>bin\Debug\lib\portable-net40+wp7+sl4+win8\</OutputPath>
+    <IntermediateOutputPath>obj\Debug\lib\portable-net40+wp7+sl4+win8\</IntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\portable\Argument.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\lib\portable-net40+wp7+sl4+win8\Argument.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\portable-net40+wp7+sl4+win8\</OutputPath>
-    <IntermediateOutputPath>obj\Release\portable-net40+wp7+sl4+win8\</IntermediateOutputPath>
+    <OutputPath>bin\Release\lib\portable-net40+wp7+sl4+win8\</OutputPath>
+    <IntermediateOutputPath>obj\Release\lib\portable-net40+wp7+sl4+win8\</IntermediateOutputPath>
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\portable\Argument.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\lib\portable-net40+wp7+sl4+win8\Argument.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->

@@ -16,22 +16,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\net20\</OutputPath>
-    <IntermediateOutputPath>obj\Debug\net20\</IntermediateOutputPath>
+    <OutputPath>bin\Debug\lib\net20\</OutputPath>
+    <IntermediateOutputPath>obj\Debug\lib\net20\</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\net20\Argument.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\lib\net20\Argument.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\net20\</OutputPath>
-    <IntermediateOutputPath>obj\Release\net20\</IntermediateOutputPath>
+    <OutputPath>bin\Release\lib\net20\</OutputPath>
+    <IntermediateOutputPath>obj\Release\lib\net20\</IntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\net20\Argument.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\lib\net20\Argument.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
