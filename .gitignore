@@ -6,3 +6,4 @@ bin/
 obj/
 _ReSharper.*
 _NCrunch*
+*.sln.ide

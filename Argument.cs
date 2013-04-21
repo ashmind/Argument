@@ -18,7 +18,21 @@ public static class Argument {
     /// </summary>
     /// <seealso cref="Argument.Ex"/>
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class Extensible {}
+    public sealed class Extensible {
+        #pragma warning disable 1591
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object obj) { throw new NotSupportedException(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() { throw new NotSupportedException(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public new Type GetType() { return base.GetType(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override String ToString() { throw new NotSupportedException(); }
+        #pragma warning disable 1591
+    }
     
     /// <summary>
     /// Verifies that a given argument value is not <c>null</c> and returns the value provided.

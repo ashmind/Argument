@@ -8,7 +8,7 @@
     </attribute>
     <parameter name="name">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
-      <attribute ctor="M:JetBrains.Annotations.InvokerParameterName.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
     </parameter>
     <parameter name="value">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
@@ -26,7 +26,7 @@
     </attribute>
     <parameter name="name">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
-      <attribute ctor="M:JetBrains.Annotations.InvokerParameterName.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
     </parameter>
     <parameter name="value">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
@@ -44,7 +44,7 @@
     </attribute>
     <parameter name="name">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
-      <attribute ctor="M:JetBrains.Annotations.InvokerParameterName.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
     </parameter>
     <parameter name="value">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
@@ -62,7 +62,7 @@
     </attribute>
     <parameter name="name">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
-      <attribute ctor="M:JetBrains.Annotations.InvokerParameterName.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
     </parameter>
     <parameter name="value">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
@@ -80,7 +80,7 @@
     </attribute>
     <parameter name="name">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
-      <attribute ctor="M:JetBrains.Annotations.InvokerParameterName.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
     </parameter>
     <parameter name="value">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
