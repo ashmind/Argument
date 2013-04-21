@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Argument</id>
-    <version>0.9.5</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <version>0.9.6</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
     <authors>Andrey Shchekin</authors>
     <owners>Andrey Shchekin</owners>
     <licenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</licenseUrl>
@@ -18,7 +18,7 @@ Less fancy than approaches based on lambdas/anonymous classes, but less scary pe
 
 Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) and ReSharper annotations.
     </description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Fixed version for .NET &lt; 4.5.</releaseNotes>
     <copyright>Copyright (c) 2013 Andrey Shchekin</copyright>
     <tags>contracts validation argument</tags>
 
