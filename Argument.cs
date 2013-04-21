@@ -12,28 +12,7 @@ using System.Diagnostics.Contracts;
 /// Provides methods for verification of argument preconditions.
 /// </summary>
 public static class Argument {
-// ReSharper restore CheckNamespace
-    /// <summary>
-    /// Provides an extensibility point that can be used by custom argument validation extension methods.
-    /// </summary>
-    /// <seealso cref="Argument.Ex"/>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class Extensible {
-        #pragma warning disable 1591
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) { throw new NotSupportedException(); }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() { throw new NotSupportedException(); }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public new Type GetType() { return base.GetType(); }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override String ToString() { throw new NotSupportedException(); }
-        #pragma warning disable 1591
-    }
-    
+// ReSharper restore CheckNamespace   
     /// <summary>
     /// Verifies that a given argument value is not <c>null</c> and returns the value provided.
     /// </summary>
@@ -209,7 +188,7 @@ public static class Argument {
     [ContractArgumentValidator]
     #endif
     public static int PositiveNonZero(string name, int value) {
-        if (value < 0) {
+        if (value <= 0) {
             #if !PORTABLE
             throw new ArgumentOutOfRangeException(name, value, "Value must be positive and not zero.");
             #else
@@ -230,5 +209,26 @@ public static class Argument {
     /// <remarks>Always returns <c>null</c>, extension methods for <see cref="Extensible"/> should ignore <c>this</c> value.</remarks>
     public static Extensible Ex {
         get { return null; }
+    }
+
+    /// <summary>
+    /// Provides an extensibility point that can be used by custom argument validation extension methods.
+    /// </summary>
+    /// <seealso cref="Argument.Ex"/>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public sealed class Extensible {
+        #pragma warning disable 1591
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object obj) { throw new NotSupportedException(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() { throw new NotSupportedException(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public new Type GetType() { return base.GetType(); }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override String ToString() { throw new NotSupportedException(); }
+        #pragma warning disable 1591
     }
 }
