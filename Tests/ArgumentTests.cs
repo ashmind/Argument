@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
@@ -76,6 +77,9 @@ public class ArgumentTests {
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, ""));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new object[0]));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new List<object>()));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new List<int>()));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (IReadOnlyCollection<int>)new List<int>()));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, ImmutableList.Create<int>()));
         }
     }
 

@@ -19,7 +19,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45_CONTRACTS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET45_CONTRACTS; READONLYCOLLECTIONS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -63,7 +63,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;NET45_CONTRACTS</DefineConstants>
+    <DefineConstants>TRACE;NET45_CONTRACTS; READONLYCOLLECTIONS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>

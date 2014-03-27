@@ -82,7 +82,7 @@ public static class Argument {
 
         return value;
     }
-
+    
     /// <summary>
     /// Verifies that a given argument value is not <c>null</c> or empty and returns the value provided.
     /// </summary>
@@ -95,17 +95,51 @@ public static class Argument {
     [ContractArgumentValidator]
     #endif
     public static TCollection NotNullOrEmpty<TCollection>(string name, TCollection value) 
-        where TCollection : class, ICollection
+        where TCollection : class, IEnumerable
     {
         Argument.NotNull(name, value);
-        if (value.Count == 0)
-            throw NewArgumentEmptyException(name);
+        var enumerator = value.GetEnumerator();
+        try {
+            if (!enumerator.MoveNext())
+                throw NewArgumentEmptyException(name);
+        }
+        finally {
+            var disposable = enumerator as IDisposable;
+            if (disposable != null)
+                disposable.Dispose();
+        }
 
         #if NET45_CONTRACTS
         Contract.EndContractBlock();
         #endif
 
         return value;
+    }
+
+    private const string PotentialDoubleEnumeration = "Using NotNullOrEmpty with plain IEnumerable may cause double enumeration. Please use a collection instead.";
+
+    /// <summary>
+    /// (DO NOT USE) Ensures that NotNullOrEmpty can not be used with plain <see cref="IEnumerable"/>,
+    /// as this may cause double enumeration.
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [Obsolete(PotentialDoubleEnumeration, true)]
+    // ReSharper disable UnusedParameter.Global
+    public static void NotNullOrEmpty(string name, IEnumerable value) {
+    // ReSharper restore UnusedParameter.Global
+        throw new Exception(PotentialDoubleEnumeration);
+    }
+
+    /// <summary> 
+    /// (DO NOT USE) Ensures that NotNullOrEmpty can not be used with plain <see cref="IEnumerable{T}" />,
+    /// as this may cause double enumeration.
+    /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [Obsolete(PotentialDoubleEnumeration, true)]
+    // ReSharper disable UnusedParameter.Global
+    public static void NotNullOrEmpty<T>(string name, IEnumerable<T> value) {
+        // ReSharper restore UnusedParameter.Global
+        throw new Exception(PotentialDoubleEnumeration);
     }
 
     private static Exception NewArgumentEmptyException(string name) {
