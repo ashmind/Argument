@@ -3,6 +3,8 @@
 This project includes a single class, `Argument`, useful for argument validation/guard methods.  
 You can get the NuGet package at: https://nuget.org/packages/Argument.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/m15csoxhl0hg6t13)](https://ci.appveyor.com/project/ashmind/argument)
+
 ##Example
 
     public MyService(OtherService other) {
