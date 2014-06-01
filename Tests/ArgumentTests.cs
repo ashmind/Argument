@@ -65,6 +65,7 @@ public class ArgumentTests {
     public static IEnumerable<object[]> NullVariants {
         get {
             yield return SimpleDataRow(name => Argument.NotNull(name, (object)null));
+            yield return SimpleDataRow(name => Argument.NotNull(name, (int?)null));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, null));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (object[])null));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (List<object>)null));

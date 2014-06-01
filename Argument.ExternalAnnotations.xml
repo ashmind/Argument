@@ -18,6 +18,41 @@
     </parameter>
   </member>
 
+  <member name="M:Argument.NotNull``1(System.String,System.Nullable{``0})">
+    <attribute ctor="M:JetBrains.Annotations.AssertionMethodAttribute.#ctor"/>
+    <attribute ctor="M:JetBrains.Annotations.ContractAnnotationAttribute.#ctor(System.String)">
+      <argument>value:null =&gt; halt;value:notnull =&gt; notnull</argument>
+    </attribute>
+    <parameter name="name">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
+    </parameter>
+    <parameter name="value">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.AssertionConditionAttribute.#ctor(JetBrains.Annotations.AssertionConditionType)">
+        <argument>3</argument>
+      </attribute>
+    </parameter>
+  </member>
+
+  <member name="M:Argument.NotNull``1(System.String,``0)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
+    <attribute ctor="M:JetBrains.Annotations.AssertionMethodAttribute.#ctor"/>
+    <attribute ctor="M:JetBrains.Annotations.ContractAnnotationAttribute.#ctor(System.String)">
+      <argument>value:null =&gt; halt;value:notnull =&gt; notnull</argument>
+    </attribute>
+    <parameter name="name">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.InvokerParameterNameAttribute.#ctor"/>
+    </parameter>
+    <parameter name="value">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
+      <attribute ctor="M:JetBrains.Annotations.AssertionConditionAttribute.#ctor(JetBrains.Annotations.AssertionConditionType)">
+        <argument>3</argument>
+      </attribute>
+    </parameter>
+  </member>
+  
   <member name="M:Argument.NotNullOrEmpty(System.String,System.String)">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor"/>
     <attribute ctor="M:JetBrains.Annotations.AssertionMethodAttribute.#ctor"/>
