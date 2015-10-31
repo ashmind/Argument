@@ -20,7 +20,9 @@ after_build:
     dnx --project Argument.Tests test
 
     if ($LastExitCode -ne 0) { exit $LastExitCode }
-
+    
+    
+    tree /F
 
     $wc = New-Object 'System.Net.WebClient'
 
