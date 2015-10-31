@@ -13,12 +13,17 @@ build:
 after_build:
 - ps: >-
     Set-StrictMode -Version 2
+
     $ErrorActionPreference = 'Stop'
 
+
     dnx --project Argument.Tests test
+
     if ($LastExitCode -ne 0) { exit $LastExitCode }
 
+
     $wc = New-Object 'System.Net.WebClient'
+
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Arguments.Tests.Results.xml))
 test: off
 deploy:
