@@ -31,4 +31,4 @@ deploy:
   api_key:
     secure: rV20COJkB2Lt/O6E7NvcdMJlHtBS8C7uuUWhFXu6XTPmEVqAeMKCDyz/yuOZwVRo
   on:
-    branch: master|dnx
+    branch: /master|dnx/
