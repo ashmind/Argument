@@ -22,11 +22,10 @@ after_build:
     if ($LastExitCode -ne 0) { exit $LastExitCode }
     
     
-    tree /F
 
     $wc = New-Object 'System.Net.WebClient'
 
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Arguments.Tests.Results.xml))
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Argument.Tests.Results.xml))
 test: off
 deploy:
 - provider: NuGet
