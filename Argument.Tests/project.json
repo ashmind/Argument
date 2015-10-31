@@ -1,0 +1,25 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Argument.Tests Class Library",
+  "authors": [ "Andrey Shchekin" ],
+
+  "dependencies": {
+      "xunit": "2.1.0-*",
+      "xunit.runner.dnx": "2.1.0-*",
+      "Argument": "",
+      "System.Collections.Immutable": "1.1.36"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "frameworkAssemblies": {
+          "System.Runtime": "",
+          "System.Threading.Tasks": ""
+      }
+    }
+  },
+
+  "commands": {
+      "test": "xunit.runner.dnx"
+  }
+}

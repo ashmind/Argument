@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if !NET45_CONTRACTS
+#if !NET45 && !DOTNET
 // ReSharper disable once CheckNamespace
 namespace System.Diagnostics.Contracts {
     [Conditional("JUST_A_SHIM")]

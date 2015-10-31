@@ -7,3 +7,4 @@ obj/
 _ReSharper.*
 _NCrunch*
 *.sln.ide
+project.lock.json

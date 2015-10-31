@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.4-dnx-1",
+  "description": "Argument validation methods, for example:\r\nthis.user = Argument.NotNull(\"user\", user).\r\n\r\nLess fancy than approaches based on lambdas/anonymous classes, but less scary performance-wise (given that argument checks are often all over the place).\r\n\r\nIncludes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) and ReSharper annotations.",
+  "authors": [ "Andrey Shchekin" ],
+  "owners": [ "Andrey Shchekin" ],
+  "tags": [ "contracts", "validation", "argument" ],
+  "projectUrl": "https://github.com/ashmind/argument",
+  "licenseUrl": "https://github.com/ashmind/argument/blob/master/License.txt",
+  "copyright": "Copyright (c) 2013–2014 Andrey Shchekin",
+
+  "frameworks": {
+    "net45":  { },
+    "net20":  { },
+    "dotnet": {
+      "dependencies": {
+        "System.Runtime": "4.0.0",
+        "System.Collections": "4.0.10",
+        "System.Diagnostics.Contracts": "4.0.0"
+      }
+    }
+  }
+}

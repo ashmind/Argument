@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Xunit;
-using Xunit.Extensions;
 
 // ReSharper disable CheckNamespace
 public class ArgumentTests {
     [Theory]
-    [PropertyData("NullVariants")]
+    [MemberData("NullVariants")]
     public void NotNullVariant_ThrowsArgumentNullException_WithCorrectMessage_WhenValueIsNull(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentNullException>(() => validate("x"));
@@ -17,7 +16,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [PropertyData("NullVariants")]
+    [MemberData("NullVariants")]
     public void NotNullVariant_ThrowsArgumentNullException_WithCorrectParamName_WhenValueIsNull(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentNullException>(() => validate("x"));
@@ -25,7 +24,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [PropertyData("EmptyVariants")]
+    [MemberData("EmptyVariants")]
     public void NotNullOrEmptyVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueIsEmpty(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentException>(() => validate("x"));
@@ -33,7 +32,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [PropertyData("IncorrectTypeVariants")]
+    [MemberData("IncorrectTypeVariants")]
     public void CastVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueHasIncorrectType(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentException>(() => validate("x"));
@@ -41,7 +40,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [PropertyData("OutOfRangeVariants")]
+    [MemberData("OutOfRangeVariants")]
     public void RangeVariant_ThrowsArgumentOutOfRangeException_WithCorrectParamName_WhenValueIsOutOfRange(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentOutOfRangeException>(() => validate("x"));
@@ -49,12 +48,12 @@ public class ArgumentTests {
     }
     
     [Theory]
-    [PropertyData("SuccessVariants")]
+    [MemberData("SuccessVariants")]
     public void AnyVariant_ReturnsArgumentValue_WhenSuccessful<T>(T argument, Expression<Func<T, T>> validateExpression) {
         var validate = validateExpression.Compile();
         var result = validate(argument);
 
-        if (typeof(T).IsValueType) {
+        if (typeof(T).GetTypeInfo().IsValueType) {
             Assert.Equal(argument, result);
         }
         else {
