@@ -1,0 +1,25 @@
+version: '{build}'
+os: Visual Studio 2015
+environment:
+  DNX_FEED: https://www.nuget.org/api/v2
+install:
+- cmd: dnvm upgrade
+before_build:
+- cmd: dnu restore
+build:
+  project: Argument.sln
+  verbosity: minimal
+after_build:
+- ps: >-
+    dnx Argument.Tests test
+
+    $wc = New-Object 'System.Net.WebClient'
+
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Arguments.Tests.Results.xml))
+test: off
+deploy:
+- provider: NuGet
+  api_key:
+    secure: rV20COJkB2Lt/O6E7NvcdMJlHtBS8C7uuUWhFXu6XTPmEVqAeMKCDyz/yuOZwVRo
+  on:
+    branch: master|dnx

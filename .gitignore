@@ -1,10 +1,5 @@
 
+.vs/
 *.user
-*.suo
-*.ncrunchsolution
-bin/
-obj/
-_ReSharper.*
-_NCrunch*
-*.sln.ide
+artifacts/
 project.lock.json

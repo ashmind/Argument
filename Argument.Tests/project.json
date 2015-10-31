@@ -20,6 +20,6 @@
   },
 
   "commands": {
-      "test": "xunit.runner.dnx"
+      "test": "xunit.runner.dnx -xml ../artifacts/Argument.Tests.Results.xml"
   }
 }
