@@ -27,6 +27,8 @@ after_build:
 
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Argument.Tests.Results.xml))
 test: off
+artifacts:
+- path: artifacts\bin\Argument\Release\Argument.*.nupkg
 deploy:
 - provider: NuGet
   api_key:
