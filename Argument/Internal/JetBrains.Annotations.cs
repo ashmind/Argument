@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -127,5 +127,5 @@ namespace JetBrains.Annotations {
     }
 
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class NoEnumerationAttribute : Attribute { }
+    internal sealed class NoEnumerationAttribute : Attribute { }
 }

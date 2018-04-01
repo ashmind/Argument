@@ -1,37 +1,22 @@
 version: '{build}'
-os: Visual Studio 2015
 configuration: Release
-environment:
-  DNX_FEED: https://www.nuget.org/api/v2
-install:
-- cmd: dnvm upgrade
+
 before_build:
-- cmd: dnu restore
+- dotnet restore
+
 build:
-  project: Argument.sln
-  verbosity: minimal
-after_build:
-- ps: >-
-    Set-StrictMode -Version 2
+- dotnet build --configuration Release
 
-    $ErrorActionPreference = 'Stop'
+after_test:
+- dotnet pack Argument --configuration Release --output ..
 
-
-    dnx --project Argument.Tests test
-
-    if ($LastExitCode -ne 0) { exit $LastExitCode }
-    
-    
-
-    $wc = New-Object 'System.Net.WebClient'
-
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\artifacts\Argument.Tests.Results.xml))
-test: off
 artifacts:
-- path: artifacts\bin\Argument\Release\Argument.*.nupkg
+- path: '*.nupkg'
+
 deploy:
 - provider: NuGet
+  artifact: /.*\.nupkg/
+  on:
+    branch: /master/
   api_key:
     secure: rV20COJkB2Lt/O6E7NvcdMJlHtBS8C7uuUWhFXu6XTPmEVqAeMKCDyz/yuOZwVRo
-  on:
-    branch: /master|dnx/

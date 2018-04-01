@@ -3,3 +3,5 @@
 *.user
 artifacts/
 project.lock.json
+bin/
+obj/

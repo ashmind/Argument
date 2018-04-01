@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq.Expressions;
@@ -8,7 +8,7 @@ using Xunit;
 // ReSharper disable CheckNamespace
 public class ArgumentTests {
     [Theory]
-    [MemberData("NullVariants")]
+    [MemberData(nameof(NullVariants))]
     public void NotNullVariant_ThrowsArgumentNullException_WithCorrectMessage_WhenValueIsNull(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentNullException>(() => validate("x"));
@@ -16,7 +16,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [MemberData("NullVariants")]
+    [MemberData(nameof(NullVariants))]
     public void NotNullVariant_ThrowsArgumentNullException_WithCorrectParamName_WhenValueIsNull(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentNullException>(() => validate("x"));
@@ -24,7 +24,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [MemberData("EmptyVariants")]
+    [MemberData(nameof(EmptyVariants))]
     public void NotNullOrEmptyVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueIsEmpty(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentException>(() => validate("x"));
@@ -32,7 +32,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [MemberData("IncorrectTypeVariants")]
+    [MemberData(nameof(IncorrectTypeVariants))]
     public void CastVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueHasIncorrectType(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentException>(() => validate("x"));
@@ -40,7 +40,7 @@ public class ArgumentTests {
     }
 
     [Theory]
-    [MemberData("OutOfRangeVariants")]
+    [MemberData(nameof(OutOfRangeVariants))]
     public void RangeVariant_ThrowsArgumentOutOfRangeException_WithCorrectParamName_WhenValueIsOutOfRange(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentOutOfRangeException>(() => validate("x"));
@@ -48,7 +48,7 @@ public class ArgumentTests {
     }
     
     [Theory]
-    [MemberData("SuccessVariants")]
+    [MemberData(nameof(SuccessVariants))]
     public void AnyVariant_ReturnsArgumentValue_WhenSuccessful<T>(T argument, Expression<Func<T, T>> validateExpression) {
         var validate = validateExpression.Compile();
         var result = validate(argument);
