@@ -6,10 +6,10 @@ this.user = Argument.NotNull("user", user).
 Less fancy than approaches based on lambdas/anonymous classes, but less scary performance-wise (given that argument checks are often all over the place).
 
 Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) and ReSharper annotations.</Description>
-    <Copyright>Copyright (c) 2013–2014 Andrey Shchekin</Copyright>
-    <VersionPrefix>1.0.4</VersionPrefix>
+    <Copyright>Copyright (c) 2013–2018 Andrey Shchekin</Copyright>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
-    <TargetFrameworks>net45;net20;netstandard11</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard11</TargetFrameworks>
     <AssemblyName>Argument</AssemblyName>
     <PackageId>Argument</PackageId>
     <PackageTags>contracts;validation;argument</PackageTags>
@@ -18,17 +18,9 @@ Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) a
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net20' ">
-    <DefineConstants>$(DebugSymbols);NO_CONTRACTS</DefineConstants>
-  </PropertyGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net20' ">
-    <Reference Include="System" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard11' ">
