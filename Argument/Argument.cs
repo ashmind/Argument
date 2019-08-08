@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,7 +177,7 @@ public static class Argument {
     /// <exception cref="ArgumentException">Thrown if <paramref name="value"/> can not be cast into type <typeparamref name="T"/>.</exception>
     /// <returns><paramref name="value"/> cast into <typeparamref name="T"/>.</returns>
     [ContractArgumentValidator]
-    public static T Cast<T>([NotNull, InvokerParameterName] string name, object value) {
+    public static T Cast<T>([NotNull, InvokerParameterName] string name, object? value) {
         if (!(value is T))
             throw new ArgumentException(string.Format("The value \"{0}\" isn't of type \"{1}\".", value, typeof(T)), name);
         Contract.EndContractBlock();
@@ -243,29 +243,29 @@ public static class Argument {
     /// Provides an extensibility point that can be used by custom argument validation extension methods.
     /// </summary>
     /// <remarks>Always returns <c>null</c>, extension methods for <see cref="Extensible"/> should ignore <c>this</c> value.</remarks>
-    public static Extensible Ex {
+    public static Extensible? Ex {
         get { return null; }
     }
 
     /// <summary>
     /// Provides an extensibility point that can be used by custom argument validation extension methods.
     /// </summary>
-    /// <seealso cref="Argument.Ex"/>
+    /// <seealso cref="Ex"/>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class Extensible {
         #pragma warning disable 1591
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) { throw new NotSupportedException(); }
+        public override bool Equals(object obj) => throw new NotSupportedException();
 
         // ReSharper disable once NonReadonlyFieldInGetHashCode
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() { throw new NotSupportedException(); }
+        public override int GetHashCode() => throw new NotSupportedException();
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public new Type GetType() { return base.GetType(); }
+        public new Type GetType() => base.GetType();
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override String ToString() { throw new NotSupportedException(); }
+        public override string ToString() => throw new NotSupportedException();
         #pragma warning disable 1591
     }
 }

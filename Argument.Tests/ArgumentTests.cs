@@ -5,6 +5,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Xunit;
 
+// Broken by nullable reference types
+#pragma warning disable xUnit1019 // MemberData must reference a member providing a valid data type
+
 // ReSharper disable CheckNamespace
 public class ArgumentTests {
     [Theory]
@@ -57,18 +60,20 @@ public class ArgumentTests {
             Assert.Equal(argument, result);
         }
         else {
+            #pragma warning disable xUnit2005 // Do not use identity check on value type
             Assert.Same(argument, result);
+            #pragma warning restore xUnit2005 // Do not use identity check on value type
         }
     }
 
     public static IEnumerable<object[]> NullVariants {
         get {
-            yield return SimpleDataRow(name => Argument.NotNull(name, (object)null));
+            yield return SimpleDataRow(name => Argument.NotNull(name, (object?)null!));
             yield return SimpleDataRow(name => Argument.NotNull(name, (int?)null));
-            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, null));
-            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (object[])null));
-            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (List<object>)null));
-            yield return SimpleDataRow(name => Argument.NotNullAndCast<object>(name, null));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, null!));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (object[]?)null!));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (List<object>?)null!));
+            yield return SimpleDataRow(name => Argument.NotNullAndCast<object>(name, null!));
         }
     }
 
@@ -122,7 +127,9 @@ public class ArgumentTests {
         return new object[] { action };
     }
 
-    private static object[] SuccessDataRow<T>(T argument, Expression<Func<T, T>> validate) {
+    private static object[] SuccessDataRow<T>(T argument, Expression<Func<T, T>> validate)
+        where T: notnull
+    {
         return new object[] { argument, validate };
     }
 }

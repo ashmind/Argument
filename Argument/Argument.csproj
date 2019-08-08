@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Argument validation methods, for example:
 this.user = Argument.NotNull("user", user).
 
 Less fancy than approaches based on lambdas/anonymous classes, but less scary performance-wise (given that argument checks are often all over the place).
 
-Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) and ReSharper annotations.</Description>
-    <Copyright>Copyright (c) 2013–2018 Andrey Shchekin</Copyright>
-    <VersionPrefix>1.1.0</VersionPrefix>
+Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only), ReSharper annotations and C# 8 nullability annotations.</Description>
+    <Copyright>Copyright (c) 2013–2019 Andrey Shchekin</Copyright>
+    <VersionPrefix>1.1.1</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
     <TargetFrameworks>net45;netstandard11</TargetFrameworks>
     <AssemblyName>Argument</AssemblyName>
@@ -16,6 +16,10 @@ Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only) a
     <PackageProjectUrl>https://github.com/ashmind/argument</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</PackageLicenseUrl>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">

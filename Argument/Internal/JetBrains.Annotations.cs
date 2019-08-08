@@ -101,7 +101,7 @@ namespace JetBrains.Annotations {
             Comment = comment;
         }
 
-        public string Comment { get; private set; }
+        public string? Comment { get; private set; }
     }
 
     [AttributeUsage(AttributeTargets.Parameter)]
