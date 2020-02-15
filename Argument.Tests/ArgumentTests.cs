@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 using Xunit;
@@ -9,6 +10,7 @@ using Xunit;
 #pragma warning disable xUnit1019 // MemberData must reference a member providing a valid data type
 
 // ReSharper disable CheckNamespace
+[SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
 public class ArgumentTests {
     [Theory]
     [MemberData(nameof(NullVariants))]
