@@ -9,3 +9,15 @@ insert_final_newline = false
 
 [*.csproj]
 indent_size = 2
+
+[*.cs]
+csharp_new_line_before_open_brace = none
+csharp_style_var_for_built_in_types = true:warning
+csharp_style_var_when_type_is_apparent = true:warning
+csharp_style_var_elsewhere = true:warning
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = none
+
+# CA1062: Validate arguments of public methods
+dotnet_diagnostic.CA1062.severity = error

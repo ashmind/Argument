@@ -5,9 +5,9 @@ this.user = Argument.NotNull("user", user).
 
 Less fancy than approaches based on lambdas/anonymous classes, but less scary performance-wise (given that argument checks are often all over the place).
 
-Includes Code Contracts [ContractArgumentValidator] annotation (.NET 4.5 only), ReSharper annotations and C# 8 nullability annotations.</Description>
-    <Copyright>Copyright (c) 2013–2019 Andrey Shchekin</Copyright>
-    <VersionPrefix>1.1.1</VersionPrefix>
+Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Analyzers, Code Contracts (.NET 4.5 only).</Description>
+    <Copyright>Copyright (c) 2013–2020 Andrey Shchekin</Copyright>
+    <VersionPrefix>1.1.2</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
     <TargetFrameworks>net45;netstandard11</TargetFrameworks>
     <AssemblyName>Argument</AssemblyName>
