@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using JetBrains.Annotations;
 using ArgumentInternal;
-using System.Runtime.CompilerServices;
 
 // ReSharper disable CheckNamespace
 /// <summary>
