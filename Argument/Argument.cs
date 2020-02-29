@@ -166,7 +166,7 @@ public static class Argument {
     }
 
     private static Exception NewArgumentEmptyException(string name) {
-        return new ArgumentException("Value can not be empty.", name);
+        return new ArgumentException("Value cannot be empty.", name);
     }
 
     /// <summary>
@@ -177,10 +177,11 @@ public static class Argument {
     /// <param name="value">Argument value.</param>
     /// <exception cref="ArgumentException">Thrown if <paramref name="value"/> can not be cast into type <typeparamref name="T"/>.</exception>
     /// <returns><paramref name="value"/> cast into <typeparamref name="T"/>.</returns>
+    [AssertionMethod]
     [ContractArgumentValidator]
     public static T Cast<T>([NotNull, InvokerParameterName] string name, object? value) {
         if (!(value is T))
-            throw new ArgumentException(string.Format("The value \"{0}\" isn't of type \"{1}\".", value, typeof(T)), name);
+            throw new ArgumentException($"Value \"{value}\" is not of type \"{typeof(T)}\".", name);
         Contract.EndContractBlock();
 
         return (T)value;
@@ -213,11 +214,28 @@ public static class Argument {
     /// <param name="value">Argument value.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="value"/> is less than zero.</exception>
     /// <returns><paramref name="value"/> if it is greater than or equal to zero.</returns>
+    [AssertionMethod]
     [ContractArgumentValidator]
     public static int PositiveOrZero([NotNull, InvokerParameterName] string name, int value) {
-        if (value < 0) {
-            throw new ArgumentOutOfRangeException(name, value, "Value must be positive or zero.");
-        }
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be negative.");
+        Contract.EndContractBlock();
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given argument value is greater than or equal to zero and returns the value provided.
+    /// </summary>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="value"/> is less than zero.</exception>
+    /// <returns><paramref name="value"/> if it is greater than or equal to zero.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static long PositiveOrZero([NotNull, InvokerParameterName] string name, long value) {
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be negative.");
         Contract.EndContractBlock();
 
         return value;
@@ -230,11 +248,32 @@ public static class Argument {
     /// <param name="value">Argument value.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="value"/> is less than or equal to zero.</exception>
     /// <returns><paramref name="value"/> if it is greater than zero.</returns>
+    [AssertionMethod]
     [ContractArgumentValidator]
     public static int PositiveNonZero([NotNull, InvokerParameterName] string name, int value) {
-        if (value <= 0) {
-            throw new ArgumentOutOfRangeException(name, value, "Value must be positive and not zero.");
-        }
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be negative.");
+        if (value == 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be zero.");
+        Contract.EndContractBlock();
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given argument value is greater than or equal to zero and returns the value provided.
+    /// </summary>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="value"/> is less than zero.</exception>
+    /// <returns><paramref name="value"/> if it is greater than or equal to zero.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static long PositiveNonZero([NotNull, InvokerParameterName] string name, long value) {
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be negative.");
+        if (value == 0)
+            throw new ArgumentOutOfRangeException(name, value, "Value cannot be zero.");
         Contract.EndContractBlock();
 
         return value;

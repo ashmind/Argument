@@ -103,6 +103,14 @@ public class ArgumentTests {
             yield return SimpleDataRow(name => Argument.PositiveNonZero(name, 0));
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, -1));
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, int.MinValue));
+
+
+            yield return SimpleDataRow(name => Argument.PositiveNonZero(name, -1L));
+            yield return SimpleDataRow(name => Argument.PositiveNonZero(name, long.MinValue));
+            yield return SimpleDataRow(name => Argument.PositiveNonZero(name, 0L));
+            yield return SimpleDataRow(name => Argument.PositiveOrZero(name, -1L));
+            yield return SimpleDataRow(name => Argument.PositiveOrZero(name, long.MinValue));
+
         }
     }
 
@@ -121,6 +129,12 @@ public class ArgumentTests {
             yield return SuccessDataRow(1,             value => Argument.PositiveOrZero("x", value));
             yield return SuccessDataRow(int.MaxValue,  value => Argument.PositiveOrZero("x", value));
             yield return SuccessDataRow(0,             value => Argument.PositiveOrZero("x", value));
+
+            yield return SuccessDataRow(1L,            value => Argument.PositiveNonZero("x", value));
+            yield return SuccessDataRow(long.MaxValue, value => Argument.PositiveNonZero("x", value));
+            yield return SuccessDataRow(1L,            value => Argument.PositiveOrZero("x", value));
+            yield return SuccessDataRow(long.MaxValue, value => Argument.PositiveOrZero("x", value));
+            yield return SuccessDataRow(0L,            value => Argument.PositiveOrZero("x", value));
 
         }
     }
