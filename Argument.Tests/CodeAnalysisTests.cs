@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-// nothing here should generate warnings
+// nothing here should generate warnings (which are set to produce errors anyways)
 public class CodeAnalysisTests {
     public int CA1062_ArgumentCheck_NotRequired_NotNull(string argument) {
         Argument.NotNull(nameof(argument), argument);

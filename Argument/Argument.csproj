@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Description>Argument validation methods, for example:
 this.user = Argument.NotNull("user", user).
 
@@ -7,7 +14,7 @@ Less fancy than approaches based on lambdas/anonymous classes, but less scary pe
 
 Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Analyzers, Code Contracts (.NET 4.5 only).</Description>
     <Copyright>Copyright (c) 2013–2020 Andrey Shchekin</Copyright>
-    <VersionPrefix>1.3</VersionPrefix>
+    <VersionPrefix>1.3.1</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
     <TargetFrameworks>net45;netstandard11</TargetFrameworks>
     <AssemblyName>Argument</AssemblyName>
@@ -15,11 +22,6 @@ Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Ana
     <PackageTags>contracts;validation;argument</PackageTags>
     <PackageProjectUrl>https://github.com/ashmind/argument</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</PackageLicenseUrl>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">

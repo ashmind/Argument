@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using CodeAnalysis = System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using ArgumentInternal;
 
@@ -25,7 +26,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static T NotNull<T>(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull] T value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull, CodeAnalysis.NotNull] T value
     )
         where T : class
     {
@@ -49,7 +50,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static T NotNull<T>(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull] T? value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull, CodeAnalysis.NotNull] T? value
     )
         where T : struct
     {
@@ -73,7 +74,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static string NotNullOrEmpty(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull] string value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull, CodeAnalysis.NotNull] string value
     ) {
         Argument.NotNull(name, value);
         if (value.Length == 0)
@@ -96,7 +97,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static T[] NotNullOrEmpty<T>(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull] T[] value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull, CodeAnalysis.NotNull] T[] value
     ) {
         Argument.NotNull(name, value);
         if (value.Length == 0)
@@ -119,7 +120,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static TCollection NotNullOrEmpty<TCollection>(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull] TCollection value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull, CodeAnalysis.NotNull] TCollection value
     )
         where TCollection : class, IEnumerable
     {
@@ -201,7 +202,7 @@ public static class Argument {
     [ContractArgumentValidator]
     public static T NotNullAndCast<T>(
         [NotNull, InvokerParameterName] string name,
-        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull] object value
+        [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), NoEnumeration, ValidatedNotNull, CodeAnalysis.NotNull] object value
     ) {
         Argument.NotNull(name, value);
         return Argument.Cast<T>(name, value);
