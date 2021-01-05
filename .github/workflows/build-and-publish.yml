@@ -1,9 +1,9 @@
-name: 'Build / Publish'
+name: 'Build and Publish'
 on: [push, pull_request]
 
 jobs:
-  build:
-    name: Build
+  build-and-publish:
+    name: 'Build and Publish'
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
