@@ -16,7 +16,7 @@ jobs:
     - run: dotnet pack --no-build --output . --configuration Release
 
     - run: dotnet nuget push Argument.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
 
     - uses: actions/upload-artifact@v2
       with:
