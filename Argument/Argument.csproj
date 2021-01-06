@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
     <LangVersion>8.0</LangVersion>
@@ -21,7 +21,7 @@ Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Ana
     <PackageId>Argument</PackageId>
     <PackageTags>contracts;validation;argument</PackageTags>
     <PackageProjectUrl>https://github.com/ashmind/argument</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</PackageLicenseUrl>
+    <PackageLicenseExpression>ISC</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
