@@ -22,6 +22,11 @@ public class NullableFlowTests {
         return argument.Count;
     }
 
+    public int CS8602_ValueIsNotNullable_After_NotNullOrWhiteSpace_String(string? argument) {
+        Argument.NotNullOrWhiteSpace(nameof(argument), argument!);
+        return argument.Length;
+    }
+
     public int CS8602_ValueIsNotNullable_After_NotNullAndCast(string? argument) {
         Argument.NotNullAndCast<string>(nameof(argument), argument!);
         return argument.Length;
