@@ -281,6 +281,98 @@ public static class Argument {
     }
 
     /// <summary>
+    /// Verifies that a given argument value is greater than a given threshold and returns the value provided.
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value to be tested.</typeparam>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <param name="threshold">The value to test against.</param>
+    /// <returns><paramref name="value"/> if it is greater than <paramref name="threshold"/>.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static TValue GreaterThan<TValue>(
+        [NotNull, InvokerParameterName] string name,
+        TValue value,
+        TValue threshold
+    )
+        where TValue : struct, IComparable, IComparable<TValue>
+    {
+        if (value.CompareTo(threshold) <= 0)
+            throw new ArgumentOutOfRangeException(name, value, $"Value cannot be less than or equal to {threshold}.");
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given argument value is greater than or equal to a given threshold and returns the value provided.
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value to be tested.</typeparam>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <param name="threshold">The value to test against.</param>
+    /// <returns><paramref name="value"/> if it is greater than or equal to <paramref name="threshold"/>.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static TValue GreaterThanOrEqualTo<TValue>(
+        [NotNull, InvokerParameterName] string name,
+        TValue value,
+        TValue threshold
+    )
+        where TValue : struct, IComparable, IComparable<TValue>
+    {
+        if (value.CompareTo(threshold) < 0)
+            throw new ArgumentOutOfRangeException(name, value, $"Value cannot be less than {threshold}.");
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given argument value is less than a given threshold and returns the value provided.
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value to be tested.</typeparam>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <param name="threshold">The value to test against.</param>
+    /// <returns><paramref name="value"/> if it is less than <paramref name="threshold"/>.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static TValue LessThan<TValue>(
+        [NotNull, InvokerParameterName] string name,
+        TValue value,
+        TValue threshold
+    )
+        where TValue : struct, IComparable, IComparable<TValue>
+    {
+        if (value.CompareTo(threshold) >= 0)
+            throw new ArgumentOutOfRangeException(name, value, $"Value cannot be greater than or equal to {threshold}.");
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given argument value is less than or equal to a given threshold and returns the value provided.
+    /// </summary>
+    /// <typeparam name="TValue">The type of the value to be tested.</typeparam>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <param name="threshold">The value to test against.</param>
+    /// <returns><paramref name="value"/> if it is less than or equal to <paramref name="threshold"/>.</returns>
+    [AssertionMethod]
+    [ContractArgumentValidator]
+    public static TValue LessThanOrEqualTo<TValue>(
+        [NotNull, InvokerParameterName] string name,
+        TValue value,
+        TValue threshold
+    )
+        where TValue : struct, IComparable, IComparable<TValue>
+    {
+        if (value.CompareTo(threshold) > 0)
+            throw new ArgumentOutOfRangeException(name, value, $"Value cannot be greater than {threshold}.");
+
+        return value;
+    }
+
+    /// <summary>
     /// Provides an extensibility point that can be used by custom argument validation extension methods.
     /// </summary>
     /// <remarks>Always returns <c>null</c>, extension methods for <see cref="Extensible"/> should ignore <c>this</c> value.</remarks>
