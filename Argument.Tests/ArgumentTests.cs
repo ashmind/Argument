@@ -120,13 +120,44 @@ public class ArgumentTests {
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, -1));
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, int.MinValue));
 
-
             yield return SimpleDataRow(name => Argument.PositiveNonZero(name, -1L));
             yield return SimpleDataRow(name => Argument.PositiveNonZero(name, long.MinValue));
             yield return SimpleDataRow(name => Argument.PositiveNonZero(name, 0L));
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, -1L));
             yield return SimpleDataRow(name => Argument.PositiveOrZero(name, long.MinValue));
 
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, 0, 0));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, -1, 0));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, int.MinValue, 0));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, -1, 0));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, int.MinValue, 0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, 0, 0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, 1, 0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, int.MaxValue, 0));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, 1, 0));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, int.MaxValue, 0));
+
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, 0.0, 0.0));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, -double.Epsilon, 0.0));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, double.MinValue, 0.0));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, -double.Epsilon, 0.0));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, double.MinValue, 0.0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, 0.0, 0.0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, double.Epsilon, 0.0));
+            yield return SimpleDataRow(name => Argument.LessThan(name, double.MaxValue, 0.0));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, double.Epsilon, 0.0));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, double.MaxValue, 0.0));
+
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, 0m, 0m));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, NegativeEpsilon, 0m));
+            yield return SimpleDataRow(name => Argument.GreaterThan(name, decimal.MinValue, 0m));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, NegativeEpsilon, 0m));
+            yield return SimpleDataRow(name => Argument.GreaterThanOrEqualTo(name, decimal.MinValue, 0m));
+            yield return SimpleDataRow(name => Argument.LessThan(name, 0m, 0m));
+            yield return SimpleDataRow(name => Argument.LessThan(name, PositiveEpsilon, 0m));
+            yield return SimpleDataRow(name => Argument.LessThan(name, decimal.MaxValue, 0m));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, PositiveEpsilon, 0m));
+            yield return SimpleDataRow(name => Argument.LessThanOrEqualTo(name, decimal.MaxValue, 0m));
         }
     }
 
@@ -153,6 +184,38 @@ public class ArgumentTests {
             yield return SuccessDataRow(long.MaxValue, value => Argument.PositiveOrZero("x", value));
             yield return SuccessDataRow(0L,            value => Argument.PositiveOrZero("x", value));
 
+            yield return SuccessDataRow(1,            value => Argument.GreaterThan("x", value, 0));
+            yield return SuccessDataRow(int.MaxValue, value => Argument.GreaterThan("x", value, 0));
+            yield return SuccessDataRow(0,            value => Argument.GreaterThanOrEqualTo("x", value, 0));
+            yield return SuccessDataRow(1,            value => Argument.GreaterThanOrEqualTo("x", value, 0));
+            yield return SuccessDataRow(int.MaxValue, value => Argument.GreaterThanOrEqualTo("x", value, 0));
+            yield return SuccessDataRow(-1,           value => Argument.LessThan("x", value, 0));
+            yield return SuccessDataRow(int.MinValue, value => Argument.LessThan("x", value, 0));
+            yield return SuccessDataRow(0,            value => Argument.LessThanOrEqualTo("x", value, 0));
+            yield return SuccessDataRow(-1,           value => Argument.LessThanOrEqualTo("x", value, 0));
+            yield return SuccessDataRow(int.MinValue, value => Argument.LessThanOrEqualTo("x", value, 0));
+
+            yield return SuccessDataRow(double.Epsilon,  value => Argument.GreaterThan("x", value, 0.0));
+            yield return SuccessDataRow(double.MaxValue, value => Argument.GreaterThan("x", value, 0.0));
+            yield return SuccessDataRow(0.0,             value => Argument.GreaterThanOrEqualTo("x", value, 0.0));
+            yield return SuccessDataRow(double.Epsilon,  value => Argument.GreaterThanOrEqualTo("x", value, 0.0));
+            yield return SuccessDataRow(double.MaxValue, value => Argument.GreaterThanOrEqualTo("x", value, 0.0));
+            yield return SuccessDataRow(-double.Epsilon, value => Argument.LessThan("x", value, 0.0));
+            yield return SuccessDataRow(double.MinValue, value => Argument.LessThan("x", value, 0.0));
+            yield return SuccessDataRow(0.0,             value => Argument.LessThanOrEqualTo("x", value, 0.0));
+            yield return SuccessDataRow(-double.Epsilon, value => Argument.LessThanOrEqualTo("x", value, 0.0));
+            yield return SuccessDataRow(double.MinValue, value => Argument.LessThanOrEqualTo("x", value, 0.0));
+
+            yield return SuccessDataRow(PositiveEpsilon,          value => Argument.GreaterThan("x", value, 0m));
+            yield return SuccessDataRow(decimal.MaxValue, value => Argument.GreaterThan("x", value, 0m));
+            yield return SuccessDataRow(0m,               value => Argument.GreaterThanOrEqualTo("x", value, 0m));
+            yield return SuccessDataRow(PositiveEpsilon,          value => Argument.GreaterThanOrEqualTo("x", value, 0m));
+            yield return SuccessDataRow(decimal.MaxValue, value => Argument.GreaterThanOrEqualTo("x", value, 0m));
+            yield return SuccessDataRow(NegativeEpsilon,          value => Argument.LessThan("x", value, 0m));
+            yield return SuccessDataRow(decimal.MinValue, value => Argument.LessThan("x", value, 0m));
+            yield return SuccessDataRow(0m,               value => Argument.LessThanOrEqualTo("x", value, 0m));
+            yield return SuccessDataRow(NegativeEpsilon,          value => Argument.LessThanOrEqualTo("x", value, 0m));
+            yield return SuccessDataRow(decimal.MinValue, value => Argument.LessThanOrEqualTo("x", value, 0m));
         }
     }
 
@@ -165,4 +228,14 @@ public class ArgumentTests {
     {
         return new object[] { argument, validate };
     }
+
+    /// <summary>
+    /// Represents the smallest possible <see cref="decimal"/> which is greater than zero.
+    /// </summary>
+    private static decimal PositiveEpsilon => new decimal(1, 0, 0, false, 28);
+
+    /// <summary>
+    /// Represents the smallest possible <see cref="decimal"/> which is less than zero.
+    /// </summary>
+    private static decimal NegativeEpsilon => new decimal(1, 0, 0, true, 28);
 }
