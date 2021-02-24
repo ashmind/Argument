@@ -21,3 +21,11 @@ dotnet_diagnostic.CA1822.severity = none
 
 # CA1062: Validate arguments of public methods
 dotnet_diagnostic.CA1062.severity = error
+
+# IDE rules should not need explicit levels in the future,
+# but for now Microsoft.CodeAnalysis.CSharp.CodeStyle requires
+# this during the build. Also warnings-as-errors do not work
+# on those, so we set them to error.
+
+# IDE0007: Use 'var' instead of explicit type
+dotnet_diagnostic.IDE0007.severity = error
