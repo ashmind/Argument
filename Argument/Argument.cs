@@ -157,8 +157,8 @@ public static class Argument {
         [NotNull, AssertionCondition(AssertionConditionType.IS_NOT_NULL), ValidatedNotNull, CodeAnalysis.NotNull] string value
     ) {
         Argument.NotNullOrEmpty(name, value);
-        bool containsOnlyWhiteSpace = true;
-        for(int i = 0; i < value.Length; i++) {
+        var containsOnlyWhiteSpace = true;
+        for (var i = 0; i < value.Length; i++) {
             if (!char.IsWhiteSpace(value[i])) {
                 containsOnlyWhiteSpace = false;
                 break;
