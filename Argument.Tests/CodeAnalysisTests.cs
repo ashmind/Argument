@@ -7,7 +7,7 @@ public class CodeAnalysisTests {
         return argument.Length;
     }
 
-    public int CA1062ArgumentCheck_NotRequired_NotNullOrEmpty_String(string argument) {
+    public int CA1062_ArgumentCheck_NotRequired_NotNullOrEmpty_String(string argument) {
         Argument.NotNullOrEmpty(nameof(argument), argument);
         return argument.Length;
     }
@@ -20,6 +20,11 @@ public class CodeAnalysisTests {
     public int CA1062_ArgumentCheck_NotRequired_NotNullOrEmpty_List(IReadOnlyList<int> argument) {
         Argument.NotNullOrEmpty(nameof(argument), argument);
         return argument.Count;
+    }
+
+    public int CA1062_ArgumentCheck_NotRequired_NotNullOrWhiteSpace_String(string argument) {
+        Argument.NotNullOrWhiteSpace(nameof(argument), argument);
+        return argument.Length;
     }
 
     public int CA1062_ArgumentCheck_NotRequired_NotNullAndCast(string argument) {

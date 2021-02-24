@@ -37,6 +37,14 @@ public class ArgumentTests {
     }
 
     [Theory]
+    [MemberData(nameof(WhiteSpaceVariants))]
+    public void NotNullOrWhiteSpaceVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueIsWhiteSpace(Expression<Action<string>> validateExpression) {
+        var validate = validateExpression.Compile();
+        var exception = Assert.Throws<ArgumentException>(() => validate("x"));
+        Assert.Equal("x", exception.ParamName);
+    }
+
+    [Theory]
     [MemberData(nameof(IncorrectTypeVariants))]
     public void CastVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueHasIncorrectType(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
@@ -75,6 +83,7 @@ public class ArgumentTests {
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, null!));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (object[]?)null!));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (List<object>?)null!));
+            yield return SimpleDataRow(name => Argument.NotNullOrWhiteSpace(name, null!));
             yield return SimpleDataRow(name => Argument.NotNullAndCast<object>(name, null!));
         }
     }
@@ -87,6 +96,13 @@ public class ArgumentTests {
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new List<int>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (IReadOnlyCollection<int>)new List<int>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, ImmutableList.Create<int>()));
+            yield return SimpleDataRow(name => Argument.NotNullOrWhiteSpace(name, ""));
+        }
+    }
+
+    public static IEnumerable<object[]> WhiteSpaceVariants {
+        get {
+            yield return SimpleDataRow(name => Argument.NotNullOrWhiteSpace(name, "\t"));
         }
     }
 
@@ -120,6 +136,7 @@ public class ArgumentTests {
             yield return SuccessDataRow("abc",         value => Argument.NotNullOrEmpty("x", value));
             yield return SuccessDataRow(new object[1], value => Argument.NotNullOrEmpty("x", value));
             yield return SuccessDataRow(new List<object> { new object() }, value => Argument.NotNullOrEmpty("x", value));
+            yield return SuccessDataRow(" abc ",       value => Argument.NotNullOrWhiteSpace("x", value));
 
             yield return SuccessDataRow("abc",         value => Argument.Cast<string>("x", value));
             yield return SuccessDataRow("abc",         value => Argument.NotNullAndCast<string>("x", value));
