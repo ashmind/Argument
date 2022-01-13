@@ -30,7 +30,7 @@ public class ArgumentTests {
 
     [Theory]
     [MemberData(nameof(EmptyVariants))]
-    public void NotNullOrEmptyVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueIsEmpty(Expression<Action<string>> validateExpression) {
+    public void EmptyVariant_ThrowsArgumentException_WithCorrectParamName_WhenValueIsEmpty(Expression<Action<string>> validateExpression) {
         var validate = validateExpression.Compile();
         var exception = Assert.Throws<ArgumentException>(() => validate("x"));
         Assert.Equal("x", exception.ParamName);
@@ -91,12 +91,13 @@ public class ArgumentTests {
     public static IEnumerable<object[]> EmptyVariants {
         get {
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, ""));
-            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new object[0]));
+            yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, Array.Empty<object>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new List<object>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, new List<int>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, (IReadOnlyCollection<int>)new List<int>()));
             yield return SimpleDataRow(name => Argument.NotNullOrEmpty(name, ImmutableList.Create<int>()));
             yield return SimpleDataRow(name => Argument.NotNullOrWhiteSpace(name, ""));
+            yield return SimpleDataRow(name => Argument.NotEmpty<int>(name, Span<int>.Empty));
         }
     }
 

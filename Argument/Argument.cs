@@ -140,6 +140,48 @@ public static class Argument {
         return value;
     }
 
+    #if NETSTANDARD2_1
+    /// <summary>
+    /// Verifies that a given <see cref="ReadOnlySpan{T}"/> argument value is not empty and returns the value provided.
+    /// </summary>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <exception cref="ArgumentException">Thrown if <paramref name="value"/> is empty.</exception>
+    /// <returns><paramref name="value"/> if it is not empty.</returns>
+    [NotNull, AssertionMethod]
+    [ContractArgumentValidator]
+    public static ReadOnlySpan<T> NotEmpty<T>(
+        [NotNull, InvokerParameterName] string name,
+        ReadOnlySpan<T> value
+    ) {
+        if (value.IsEmpty)
+            throw NewArgumentEmptyException(name);
+        Contract.EndContractBlock();
+
+        return value;
+    }
+
+    /// <summary>
+    /// Verifies that a given <see cref="ReadOnlyMemory{T}"/> argument value is not empty and returns the value provided.
+    /// </summary>
+    /// <param name="name">Argument name.</param>
+    /// <param name="value">Argument value.</param>
+    /// <exception cref="ArgumentException">Thrown if <paramref name="value"/> is empty.</exception>
+    /// <returns><paramref name="value"/> if it is not empty.</returns>
+    [NotNull, AssertionMethod]
+    [ContractArgumentValidator]
+    public static ReadOnlyMemory<T> NotEmpty<T>(
+        [NotNull, InvokerParameterName] string name,
+        ReadOnlyMemory<T> value
+    ) {
+        if (value.IsEmpty)
+            throw NewArgumentEmptyException(name);
+        Contract.EndContractBlock();
+
+        return value;
+    }
+    #endif
+
     /// <summary>
     /// Verifies that a given argument value is not <c>null</c>, empty, or consists only of white-space characters and returns the value provided.
     /// </summary>
@@ -325,7 +367,7 @@ public static class Argument {
     /// <seealso cref="Ex"/>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class Extensible {
-        #pragma warning disable 1591
+#pragma warning disable 1591
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object obj) => throw new NotSupportedException();
 
@@ -338,6 +380,6 @@ public static class Argument {
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override string ToString() => throw new NotSupportedException();
-        #pragma warning disable 1591
+#pragma warning disable 1591
     }
 }

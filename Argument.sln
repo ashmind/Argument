@@ -1,18 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{48B9BF9A-498F-4238-9F1E-CE9FAB616B09}"
 	ProjectSection(SolutionItems) = preProject
-		Argument.cs = Argument.cs
-		Argument.ExternalAnnotations.xml = Argument.ExternalAnnotations.xml
+		Directory.Build.props = Directory.Build.props
 		License.txt = License.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{E40A2F3C-917C-47F5-A3F7-C89DF7C5939A}"
-	ProjectSection(SolutionItems) = preProject
-		Properties\AssemblyInfo.cs = Properties\AssemblyInfo.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Argument", "Argument\Argument.csproj", "{8C077462-1F3C-493A-924D-F1DA430E1E1C}"
@@ -56,9 +50,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E40A2F3C-917C-47F5-A3F7-C89DF7C5939A} = {48B9BF9A-498F-4238-9F1E-CE9FAB616B09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1B12DA8-F185-4BA1-B149-B87D3554872D}

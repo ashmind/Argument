@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Description>Argument validation methods, for example:
 this.user = Argument.NotNull("user", user).
 
 Less fancy than approaches based on lambdas/anonymous classes, but less scary performance-wise (given that argument checks are often all over the place).
 
 Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Analyzers, Code Contracts (.NET 4.5 only).</Description>
-    <Copyright>Copyright (c) 2013–2020 Andrey Shchekin</Copyright>
+    <Copyright>Copyright (c) 2013–2022 Andrey Shchekin</Copyright>
     <VersionPrefix>1.4.0</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
-    <TargetFrameworks>net45;netstandard11</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard11;netstandard21</TargetFrameworks>
     <AssemblyName>Argument</AssemblyName>
     <PackageId>Argument</PackageId>
     <PackageTags>contracts;validation;argument</PackageTags>
     <PackageProjectUrl>https://github.com/ashmind/argument</PackageProjectUrl>
     <PackageLicenseExpression>ISC</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'netstandard11' ">
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
@@ -31,5 +31,4 @@ Annotations: C# 8 nullable reference types, ReSharper, Microsoft.CodeQuality.Ana
     <PackageReference Include="System.Collections" Version="4.0.11" />
     <PackageReference Include="System.Diagnostics.Contracts" Version="4.0.1" />
   </ItemGroup>
-
 </Project>
